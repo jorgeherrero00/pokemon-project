@@ -1,0 +1,24 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+// Your web app's Firebase configuration
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBDSaaY6FF1QqenBW6KBh64d01tL4-doKM",
+  authDomain: "pokemon-project-b10e8.firebaseapp.com",
+  projectId: "pokemon-project-b10e8",
+  storageBucket: "pokemon-project-b10e8.appspot.com",
+  messagingSenderId: "398696292928",
+  appId: "1:398696292928:web:53963610b413d54f8e35a5",
+  measurementId: "G-YQKS29TMNL"
+};
+ 
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase Authentication and get a reference to the service
+export const auth = getAuth(app);
+export default app;

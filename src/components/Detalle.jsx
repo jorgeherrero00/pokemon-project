@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Link } from "react-router-dom";
+
 function Detalle() {
     const [listaDetalles, setListaDetalles] = useState([]);
-
     let {id} = useParams();
         useEffect(()=>{
             fetch("https://pokeapi.co/api/v2/pokemon/"+id)
@@ -16,8 +17,9 @@ function Detalle() {
            
     return (
         <>
+
             <h2>{listaDetalles.name}</h2>
-            <img src={listaDetalles.sprites && listaDetalles.sprites.back_default} alt="" />´
+            <img src={listaDetalles.sprites.other.showdown.front_default} alt="" />´
             <p>Experiencia: {listaDetalles.base_experience}</p>
             <p>Habilidades: </p>
             <ul>
@@ -37,6 +39,8 @@ function Detalle() {
                         </li>
                     ))}
             </ul>
+            <Link to="/pokemon">Volver</Link>
+
         </>
     );
 }

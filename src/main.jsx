@@ -12,6 +12,7 @@ import {
 import Pokemon from './components/Pokemon.jsx';
 import Cabecera from './components/Cabecera.jsx';
 import Detalle from './components/Detalle.jsx';
+import Jugar from './components/Jugar.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,10 +39,16 @@ const router = createBrowserRouter([
     element: 
       <Detalle></Detalle>
   },
+  {
+    path:"jugar",
+    element:
+    <Jugar></Jugar>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router}></RouterProvider>
+    
   </React.StrictMode>,
 )

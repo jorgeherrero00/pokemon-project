@@ -28,7 +28,6 @@ function Pokemon(){
         <>
             <h1>Componente para lista Pokemons</h1>
             {lista}
-
             <button onClick={cargarMas}></button>
         </>
     )
