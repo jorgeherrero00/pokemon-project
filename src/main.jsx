@@ -42,13 +42,14 @@ const router = createBrowserRouter([
   {
     path:"jugar",
     element:
-    <Jugar></Jugar>
+    <>
+        <Cabecera></Cabecera>
+        <Jugar></Jugar>
+    </>
+
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <RouterProvider router={router}></RouterProvider>
-    
-  </React.StrictMode>,
 )

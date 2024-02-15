@@ -19,7 +19,6 @@ function Cabecera() {
                         const datosPokemons = await response.json();
                         console.log(datosPokemons);
                         setPokemonBusqueda(datosPokemons);
-                        setMensaje('¡Correcto! Sigue intentándolo.');
                     } else {
                         console.error(`Error en la petición: ${response.status} - ${response.statusText}`);
                         setMensaje('No se encontró el Pokémon. Intenta de nuevo.');
