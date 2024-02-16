@@ -79,34 +79,44 @@ function Cabecera() {
 
     return (
         <>
-            {user ? (
-                <>
-                    <p>{user.displayName}</p>
-                    <button onClick={cerrarSesion}>Cerrar Sesión</button>
-                    <Link to="/jugar">Jugar</Link>
-                </>
-            ) : (
-                <button onClick={iniciarSesion}>Iniciar Sesión</button>
-            )}
-            <Link to="/">Inicio</Link>
-            <Link to="/pokemon">Pokemons</Link>
-            <input
+          <nav className="navbar">
+            <div className="navbar-container">
+              <Link to="/">Inicio</Link>
+              <Link to="/pokemon">Pokemons</Link>
+              <input
                 type="text"
                 placeholder="Buscar pokemons..."
                 value={name}
                 onChange={handleInputChange}
-            />
-            <h2>{mensaje}</h2>
-            {pokemonBusqueda && (
+              />
+              <h2>{mensaje}</h2>
+              {pokemonBusqueda && (
                 <>
-                    <Link to={"/Detalle/" + pokemonBusqueda.name}>
-                        <h4>{pokemonBusqueda.name}</h4>
-                    </Link>
-                    <img src={`https://pokeapi.co/media/sprites/pokemon/${pokemonBusqueda.id}.png`} alt="" />
+                  <Link to={"/Detalle/" + pokemonBusqueda.name}>
+                    <h4>{pokemonBusqueda.name}</h4>
+                  </Link>
+                  <img src={`https://pokeapi.co/media/sprites/pokemon/${pokemonBusqueda.id}.png`} alt="" />
                 </>
-            )}
+              )}
+              {!user ? (
+                <>
+                <button onClick={iniciarSesion}><img style={{ width: '20px',marginLeft:'550px' }} src="../public/img/google.png" alt="" /></button>
+                <Link to="/inicioSesion"><button>Inicio de Sesión</button></Link>
+                <Link to="/registro"><button>Registrarse</button></Link>
+              </>
+              ) : (
+                <>
+                <Link to="/jugar">Jugar</Link>
+                  <p style={{color:'white',marginLeft: '650px'}}>{user.displayName || user.email}</p>
+                  <button onClick={cerrarSesion}>Cerrar Sesión</button>
+                </>
+                
+              )}
+            </div>
+          </nav>
         </>
-    );
+      );
+      
 }
 
 export default Cabecera;

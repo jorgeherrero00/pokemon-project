@@ -13,14 +13,16 @@ import Pokemon from './components/Pokemon.jsx';
 import Cabecera from './components/Cabecera.jsx';
 import Detalle from './components/Detalle.jsx';
 import Jugar from './components/Jugar.jsx';
-
+import Landing from './components/Landing.jsx';
+import InicioSesion from './components/InicioSesion.jsx';
+import Registro from './components/Registro.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
     element: 
       <>
         <Cabecera></Cabecera>
-        <App></App>
+        <Landing></Landing>
       </>,
     errorElement:<h1>Ruta no apta</h1>
   },
@@ -47,7 +49,22 @@ const router = createBrowserRouter([
         <Jugar></Jugar>
     </>
 
-  }
+  },
+  {
+    path:"inicioSesion",
+    element:
+    <>
+      <Cabecera></Cabecera>
+      <InicioSesion></InicioSesion>
+    </>
+  },
+  {
+    path:"registro",
+    element:
+    <>
+    <Cabecera></Cabecera>
+    <Registro></Registro>
+  </>  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

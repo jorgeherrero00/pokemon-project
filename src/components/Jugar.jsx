@@ -119,7 +119,7 @@ function Jugar() {
         } else {
           await addDoc(rankingCollection, {
             userId: usuarioAutenticado.uid,
-            nombre: usuarioAutenticado.displayName,
+            nombre: usuarioAutenticado.displayName ? usuarioAutenticado.displayName : usuarioAutenticado.email,
             puntaje,
             fecha: serverTimestamp(),
           });
@@ -135,37 +135,38 @@ function Jugar() {
   };
 
   return (
-    <div>
-     
-          
-        
-      {pokemonData && (
-        <>
-          <h2>Adivina el Pokémon:</h2>
-          <img src={pokemonData.sprites.other['official-artwork'].front_default} alt={pokemonData.name} className="silueta" />
-          <div>
-            {opciones.map((opcion, index) => (
-              <button key={index} onClick={() => handleClick(opcion)} disabled={!puedeHacerClick}>
-                {opcion}
-              </button>
-            ))}
-          </div>
-          <p className={mensaje.startsWith('¡') ? 'mensaje-correcto' : 'mensaje-incorrecto'}>{mensaje}</p>
-          <h3>Ranking:</h3>
-          <ul>
-            {ranking.map((jugador, index) => (
-              <li key={index}>
-                {index + 1}. {jugador.nombre} - Puntaje: {jugador.puntaje}
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-            {isLoading && <div className="traffic-loader"></div>}
-
+    <div className="container">
+      <div className="juego">
+        {pokemonData && (
+          <>
+            <h2>Adivina el Pokémon:</h2>
+            <img src={pokemonData.sprites.other['official-artwork'].front_default} alt={pokemonData.name} className="silueta" />
+            <div>
+              {opciones.map((opcion, index) => (
+                <button key={index} onClick={() => handleClick(opcion)} disabled={!puedeHacerClick}>
+                  {opcion}
+                </button>
+              ))}
+            </div>
+            <p className={mensaje.startsWith('¡') ? 'mensaje-correcto' : 'mensaje-incorrecto'}>{mensaje}</p>
+          </>
+        )}
+        {isLoading && <div className="traffic-loader"></div>}
+      </div>
+  
+      <div className="ranking">
+  <h3>Ranking:</h3>
+  <ul>
+    {ranking.map((jugador, index) => (
+      <li key={index}>
+        {index + 1}. {jugador.nombre ? jugador.nombre : jugador.email} - Puntaje: {jugador.puntaje}
+      </li>
+    ))}
+  </ul>
+</div>
     </div>
-    
   );
+  
 }
 
 export default Jugar;

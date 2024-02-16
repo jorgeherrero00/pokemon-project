@@ -113,7 +113,7 @@ function Pokemon() {
       <div className="grupo-cartas">{lista}</div>
       {isLoading && <div className="traffic-loader"></div>}
       {!isLoading && (
-        <button onClick={cargarMas} disabled={isLoading}>
+        <button style={{color:'black'}}  onClick={cargarMas} disabled={isLoading}>
           Cargar Más
         </button>
       )}
