@@ -29,8 +29,8 @@ function Detalle() {
         {
           label: 'Stats',
           data: data || [],
-          backgroundColor: 'rgba(75,192,192,0.2)',
-          borderColor: 'rgba(75,192,192,1)',
+          backgroundColor: 'white',
+          borderColor: 'white',
           borderWidth: 1,
         },
       ],
@@ -40,22 +40,21 @@ function Detalle() {
   return (
     <>
       <div className='div-detalles'>
-        <h2 style={{textTransform:'uppercase'}}>{listaDetalles?.name}</h2>
+        <h2 style={{textTransform:'uppercase',color:'aqua'}}>{listaDetalles?.name}</h2>
         <img
           src={listaDetalles?.sprites?.other?.showdown?.front_default}
           alt=""
         />
-        <p>Experiencia: {listaDetalles?.base_experience}</p>
-        <p>Habilidades: </p>
-        <ul>
+        <p className='campoDetalles'>Experiencia: {listaDetalles?.base_experience}</p>
+        <ul className='campoDetalles'>
           {listaDetalles?.abilities &&
             listaDetalles.abilities.map((ability, index) => (
-              <li key={index}>{ability.ability.name}</li>
+              <li style={{listStyle:'none'}} key={index}>Habilidad: {ability.ability.name}</li>
             ))}
         </ul>
-        <p>Altura: {listaDetalles?.height}0 cm</p>
-        <p>Peso: {listaDetalles?.weight / 10}kg</p>
-        <p>Stats: </p>
+        <p className='campoDetalles'>Altura: {listaDetalles?.height}0 cm</p>
+        <p className='campoDetalles'>Peso: {listaDetalles?.weight / 10}kg</p>
+        <p className='campoDetalles'>Stats: </p>
         <Bar
   data={getStatsData()}
   options={{
@@ -66,12 +65,15 @@ function Detalle() {
     },
     elements: {
       bar: {
-        barThickness: 20, // Ajusta este valor según tus preferencias
+        barThickness: 5, 
       },
     },
   }}
 />
-        <Link to="/">Volver</Link>
+
+
+<button style={{color:'black'}}>        <Link to="/">Volver</Link>
+</button>
       </div>
     </>
   );

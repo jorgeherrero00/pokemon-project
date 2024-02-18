@@ -92,9 +92,10 @@ body {
 }
 
 .div-detalles{
-  background-color: rgb(32, 32, 32);
+  background-color: #333; 
   border-radius: 10px;
-  width: 900px;
+  width: 500px;
+  margin: 100px auto;
 }
 
 .normal {
@@ -277,4 +278,8 @@ button{
 
 .img-landing{
   width: 70%;
+}
+
+.campoDetalles{
+  color: white;
 }

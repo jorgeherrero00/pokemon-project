@@ -39,7 +39,7 @@ function InicioSesion() {
           <input type="password" value={password} onChange={handlePasswordChange} />
         </label>
         <br />
-        <button type="button" onClick={handleInicioSesion}>
+        <button type="button" style={{color:'black'}} onClick={handleInicioSesion}>
           Iniciar Sesión
         </button>
       </form>

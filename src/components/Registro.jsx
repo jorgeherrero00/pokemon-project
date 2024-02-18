@@ -39,7 +39,7 @@ function Registro() {
           <input type="password" value={password} onChange={handlePasswordChange} />
         </label>
         <br />
-        <button type="button" onClick={handleRegistro}>
+        <button type="button"  style={{color:'black'}} onClick={handleRegistro}>
           Registrarse
         </button>
       </form>

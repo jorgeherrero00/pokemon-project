@@ -3,12 +3,14 @@ import { useState, useEffect } from 'react';
 import { GoogleAuthProvider } from "firebase/auth";
 import { signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from '../../firebase';
+import { GithubAuthProvider } from "firebase/auth";
+
 
 function Cabecera() {
     const [name, setName] = useState('');
-    const [pokemonBusqueda, setPokemonBusqueda] = useState(null); // Cambiado a null para manejar la búsqueda correcta
+    const [pokemonBusqueda, setPokemonBusqueda] = useState(null); 
     const [user, setUser] = useState(null);
-    const [mensaje, setMensaje] = useState(''); // Nuevo estado para el mensaje de éxito o falla
+    const [mensaje, setMensaje] = useState(''); 
 
     useEffect(() => {
         const fetchData = async () => {
@@ -53,7 +55,7 @@ function Cabecera() {
 
     const handleInputChange = (event) => {
         setName(event.target.value);
-        // Limpiar el estado de la búsqueda y el mensaje al cambiar el input
+        
         setPokemonBusqueda(null);
         setMensaje('');
     };
@@ -67,6 +69,14 @@ function Cabecera() {
             }).catch((error) => {
                 console.error('Error al iniciar sesión:', error);
             });
+    }
+    function iniciarSesionConGithub() {
+      signInWithPopup(auth, new GithubAuthProvider())
+        .then((result) => {
+          console.log(result.user);
+        }).catch((error) => {
+          console.error('Error al iniciar sesión con GitHub:', error);
+        });
     }
 
     function cerrarSesion() {
@@ -101,6 +111,7 @@ function Cabecera() {
               {!user ? (
                 <>
                 <button onClick={iniciarSesion}><img style={{ width: '20px',marginLeft:'550px' }} src="../public/img/google.png" alt="" /></button>
+                <button onClick={iniciarSesionConGithub}><img style={{ width: '20px'}} src="../public/img/github.png" alt="" /></button>
                 <Link to="/inicioSesion"><button>Inicio de Sesión</button></Link>
                 <Link to="/registro"><button>Registrarse</button></Link>
               </>
